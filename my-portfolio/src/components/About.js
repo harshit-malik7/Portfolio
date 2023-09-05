@@ -58,7 +58,7 @@ const About = () => {
       <div className='experience'>
         <h1>Experience</h1>
         <List
-          sx={{ width: '300%', maxWidth: 500, bgcolor: 'background' }}
+          sx={{ width: '500%', maxWidth: 500, height:'1000%' , bgcolor: 'background' }}
           component="nav"
           aria-labelledby="nested-list-subheader"
           subheader={
@@ -67,10 +67,10 @@ const About = () => {
           }
         >
           <ListItemButton onClick={handleClick}>
-            <ListItemIcon color='white'>
+            <ListItemIcon>
               <SendIcon style={{color:"white"}}/>
             </ListItemIcon>
-            <ListItemText style={{color:"white"}} primary="Software Developer Intern, CES Corporation" />
+            <ListItemText style={{color:"white", fontSize:'large'}} primary="Software Developer Intern, CES Corporation" />
             {open ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
           <Collapse in={open} timeout="auto" unmountOnExit>

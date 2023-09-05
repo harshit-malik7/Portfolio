@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import {Routes, useNavigate, Route} from 'react-router-dom'
 import About from './About'
 import Contact from './Contact'
@@ -10,8 +10,10 @@ const Home = () => {
     const toAbout = () => {
         navigate('/about')
     }
-    const toContact = () => {
-        navigate('/contact')
+    const bottomElement=useRef(null);
+
+    const scrolltoBottom=()=>{
+        bottomElement?.current?.scrollIntoView({behavior:"smooth"})
     }
     return (
     <div>
@@ -20,9 +22,12 @@ const Home = () => {
         <img classname="logo" src="https://www.ualberta.ca/women-in-scholarship-engineering-science-technology/media-library/images/logos/copy-of-faculty-of-engineering.jpg"></img>
         <div className='button-container'>
           <button className='btn btn-primary btn-lg mx-3 px-5 py-3 mt-2' onClick={toAbout}>About me</button>
-          <button className='btn btn-primary btn-lg mx-3 px-5 py-3 mt-2' onClick={toContact}>Contact me</button>
+          <button className='btn btn-primary btn-lg mx-3 px-5 py-3 mt-2' onClick={scrolltoBottom}>Contact me</button>
         </div>
-      </header>    
+      </header>
+      <div ref={bottomElement}>
+        <p>Contact me</p>
+      </div>    
     </div>
   )
 }
