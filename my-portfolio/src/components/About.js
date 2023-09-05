@@ -13,21 +13,13 @@ import SendIcon from '@mui/icons-material/Send';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import StarBorder from '@mui/icons-material/StarBorder';
+import { pdfjs } from 'react-pdf';
+import { Document, Page } from 'react-pdf';
+import Resume_july_2023 from './Resume_july_2023.pdf';
  
 
 const About = () => {
   //make a button function to download resume
-  const downloadResume = () => {
-    fetch('Resume July 2023.pdf').then(response=>{
-      response.blob().then(blob=>{
-        const resumeURL=window.URL.createObjectURL(blob);
-        let a=document.createElement('a');
-        a.href=resumeURL;
-        a.download="Resume July 2023.pdf";
-        a.click();
-      })
-    })
-  }
 
   const [open, setOpen] = React.useState(true);
   const handleClick = () => {
@@ -53,7 +45,14 @@ const About = () => {
     />
       </div>
       <div className='resume'>
-      <button className='btn btn-primary btn-lg mx-3 px-5 py-3 mt-2' onClick={downloadResume}>Download Resume</button>
+      <object
+      data={Resume_july_2023}
+      type="application/pdf"
+      width="100%"
+      style={{ height: 'calc(100vh - 43px)' }}
+      aria-label="This object displays an PDF file"
+    />
+        <a href={Resume_july_2023} download="Resume-Harshit_Malik" target="_blank" rel="noreferrer">Download Resume</a>
       </div>
       <div className='experience'>
         <h1>Experience</h1>
