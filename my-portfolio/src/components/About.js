@@ -13,8 +13,6 @@ import SendIcon from '@mui/icons-material/Send';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import StarBorder from '@mui/icons-material/StarBorder';
-import { pdfjs } from 'react-pdf';
-import { Document, Page } from 'react-pdf';
 import Resume_july_2023 from './Resume_july_2023.pdf';
  
 
@@ -44,16 +42,7 @@ const About = () => {
       }}
     />
       </div>
-      <div className='resume'>
-      <object
-      data={Resume_july_2023}
-      type="application/pdf"
-      width="100%"
-      style={{ height: 'calc(100vh - 43px)' }}
-      aria-label="This object displays an PDF file"
-    />
-        <a href={Resume_july_2023} download="Resume-Harshit_Malik" target="_blank" rel="noreferrer">Download Resume</a>
-      </div>
+      
       <div className='experience'>
         <h1>Experience</h1>
         <List
@@ -125,7 +114,17 @@ const About = () => {
           </Collapse>
           </List>
 
-      </div>  
+      </div>
+      <div className='resume'>
+      <object
+      data={Resume_july_2023}
+      type="application/pdf"
+      width="100%"
+      style={{ height: 'calc(100vh - 43px)' }}
+      aria-label="This object displays an PDF file"
+    />
+        <a href={Resume_july_2023} download="Resume-Harshit_Malik" target="_blank" rel="noreferrer">Download Resume</a>
+      </div>
     </div>
 
   )
