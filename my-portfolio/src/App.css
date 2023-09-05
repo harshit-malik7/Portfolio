@@ -39,11 +39,18 @@
 
 .about1{
   position: relative;
+  margin-bottom: 100px;
 
 }
 
-.about2{
+.resume{
   position: relative;
+  margin-bottom: 100px;
+}
+
+.experience{
+  position: relative;
+  margin-bottom: 100px;
 }
 
 .App-link {
