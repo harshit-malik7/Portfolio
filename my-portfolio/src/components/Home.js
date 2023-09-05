@@ -1,28 +1,27 @@
 import React from 'react'
+import {Routes, useNavigate, Route} from 'react-router-dom'
+import About from './About'
+import Contact from './Contact'
 
 const Home = () => {
+
+    const navigate=useNavigate();
+    //function to redirect to the about page
     const toAbout = () => {
-        window.location.href = '/about'
+        navigate('/about')
     }
     const toContact = () => {
-        window.location.href = '/contact'
+        navigate('/contact')
     }
     return (
     <div>
         <header className="App-header">
-        <img src="https://www.ualberta.ca/women-in-scholarship-engineering-science-technology/media-library/images/logos/copy-of-faculty-of-engineering.jpg"></img>
+          <h1 style={{color:"blue"}}>Harshit Malik</h1>
+        <img classname="logo" src="https://www.ualberta.ca/women-in-scholarship-engineering-science-technology/media-library/images/logos/copy-of-faculty-of-engineering.jpg"></img>
         <div className='button-container'>
           <button className='btn btn-primary btn-lg mx-3 px-5 py-3 mt-2' onClick={toAbout}>About me</button>
           <button className='btn btn-primary btn-lg mx-3 px-5 py-3 mt-2' onClick={toContact}>Contact me</button>
         </div>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>    
     </div>
   )
