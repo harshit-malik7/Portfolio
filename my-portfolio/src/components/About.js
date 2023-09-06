@@ -29,20 +29,7 @@ const About = () => {
     setOpen2(!open2);
   };
   return (
-    <div className='About-header'>
-      <div className='about1'>
-      {/*Typewriter  onInit={(typewriter)=>{ typewriter.typeString("Hello, I am Harshit Malik").pauseFor(1000).deleteAll().typeString("I am in my final year as a software engineering co-op student at the University of Alberta").start();}}>*/}
-      <Typewriter
-      options={{
-        strings: ["Hello, I am Harshit Malik", "I am in my final year as a software engineering co-op student at the University of Alberta"],
-        autoStart: true, // Automatically start typing
-        loop: true,       // Loop the typing animation
-        delay: 50,        // Delay between each character
-        deleteSpeed: 20,  // Speed of deleting characters
-      }}
-    />
-      </div>
-      
+    <div className='About-header'>      
       <div className='experience'>
         <h1>Experience</h1>
         <List
