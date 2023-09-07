@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: black;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,7 +22,6 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: black;
-  margin-top: 100px;
 }
 
 .About-header {
@@ -54,10 +53,10 @@
 
 .button-container {
   display: flex;
-  margin-top: 50px;
-  margin-bottom: 600px;
-  position: relative;
-  flex-direction: column;
+  top:0;
+  right:0;
+  position: absolute;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
@@ -71,11 +70,12 @@
 
 .wrapper{
   position: relative;
-  color: black;
+  color: whitesmoke;
   display: flex;
   text-align: center;
   font-size: 30px;
   max-width: 880px;
+  margin-bottom: 1000px;
 }
 
 .gif{
@@ -97,9 +97,8 @@
 }
 
 .contact{
-  position: relative;
-  bottom: 0;
-  left: 0; /* You can adjust the horizontal position as needed */
+  position: absolute;
+  bottom:0;
   width: 100%; /* Make it full width */
   text-align: center; /* Center its content horizontally */
 }
