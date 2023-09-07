@@ -37,7 +37,7 @@ const Home = () => {
       }
       function draw() {
         ctx.globalCompositeOperation = 'destination-over';
-        ctx.clearRect(0, 0, 1000, 1000); // clear canvas
+        ctx.clearRect(0, 0, 800, 800); // clear canvas
   
         ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
         ctx.strokeStyle = 'rgba(0, 153, 255, 0.4)';
@@ -51,9 +51,9 @@ const Home = () => {
           ((2 * Math.PI) / 60) * time.getSeconds() +
             ((2 * Math.PI) / 60000) * time.getMilliseconds(),
         );
-        ctx.translate(250, 0);
+        ctx.translate(225, 0);
         ctx.fillRect(0, -12, 40, 24); // Shadow
-        ctx.drawImage(earth.current, -20, -20,50,50);
+        ctx.drawImage(earth.current, -25, -25,50,50);
         ctx.restore();
 
         
@@ -62,22 +62,22 @@ const Home = () => {
         ctx.save();
          const marsTime = new Date();
          ctx.rotate(
-           ((2 * Math.PI) / 6) * marsTime.getSeconds() +
-             ((2 * Math.PI) / 6000) * marsTime.getMilliseconds(),
+           (( Math.PI) / 6) * marsTime.getSeconds()*0.1 +
+             (( Math.PI) / 6000) * marsTime.getMilliseconds()*0.1,
          );
-         ctx.translate(350,0);
-         ctx.drawImage(mars.current, -3.5, -3.5, 50,50);
+         ctx.translate(325,0);
+         ctx.drawImage(mars.current, -45, -45, 50,50);
          ctx.restore();
   
         ctx.restore();
   
         ctx.beginPath();
-        ctx.arc(500, 300, 250, 0, Math.PI * 2, false); // Earth orbit
+        ctx.arc(500, 300, 225, 0, Math.PI * 2, false); // Earth orbit
         ctx.stroke();
         ctx.closePath();
         //mars orbit
         ctx.beginPath();
-        ctx.arc(500, 300, 350, 0, Math.PI * 2, false); // Mars orbit
+        ctx.arc(500, 300, 300, 0, Math.PI * 2, false); // Mars orbit
         ctx.stroke();
   
         ctx.drawImage(sun.current, 400, 200, 200, 200);
@@ -86,7 +86,7 @@ const Home = () => {
       }
   
       init();
-    }, []);
+    },[] );
 
 
     
@@ -94,13 +94,13 @@ const Home = () => {
     return (
       
     <div className="App-header">
-        <canvas ref={canvasref} width="1000" height="1000" ></canvas>
         {/*<header className="App-header">*/}
         <img className="logo" src="https://www.ualberta.ca/women-in-scholarship-engineering-science-technology/media-library/images/logos/copy-of-faculty-of-engineering.jpg" style={{width:"300px",height:"100px", position: 'absolute', left:'0', top:'0'}}></img>
         <div className='button-container'>
           <button className='btn btn-outline-success btn-lg' style={{fontFamily:'cursive', border:'none', backgroundColor: 'transparent'}} onClick={toAbout}>About me</button>
           <button className='btn btn-outline-info btn-lg' style={{fontFamily:'cursive',border:'none',backgroundColor: 'transparent'}} onClick={scrolltoBottom}>Contact me</button>
         </div>
+        <canvas ref={canvasref} width="800" height="800" className='canvas' ></canvas>
         {/* <iframe className="gif" src="https://giphy.com/embed/qgQUggAC3Pfv687qPC" width="400" height="300" frameBorder="0" class="giphy-embed"></iframe> */}
       {/*Typewriter  onInit={(typewriter)=>{ typewriter.typeString("Hello, I am Harshit Malik").pauseFor(1000).deleteAll().typeString("I am in my final year as a software engineering co-op student at the University of Alberta").start();}}>*/}
       <div className="typewriter">

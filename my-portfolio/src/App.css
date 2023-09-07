@@ -75,7 +75,6 @@
   text-align: center;
   font-size: 30px;
   max-width: 880px;
-  margin-bottom: 1000px;
 }
 
 .gif{
@@ -92,15 +91,24 @@
  
 }
 .typewriter{
+  position:absolute;
   display:block;
   padding-top: 20px;
+  top:60%
 }
 
 .contact{
-  position: absolute;
+  position: relative;
   bottom:0;
   width: 100%; /* Make it full width */
   text-align: center; /* Center its content horizontally */
+}
+
+.canvas{
+  position:relative;
+  margin-left: 35%;
+  margin-right: 50%;
+  margin-bottom: 400px;
 }
 
 @keyframes App-logo-spin {
