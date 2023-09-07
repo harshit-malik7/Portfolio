@@ -80,7 +80,7 @@ const Home = () => {
         ctx.arc(500, 300, 300, 0, Math.PI * 2, false); // Mars orbit
         ctx.stroke();
   
-        ctx.drawImage(sun.current, 400, 200, 200, 200);
+        ctx.drawImage(sun.current, 415, 200, 200, 200);
   
         window.requestAnimationFrame(draw);
       }
