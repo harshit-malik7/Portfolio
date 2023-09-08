@@ -46,7 +46,7 @@ const About = () => {
               <SendIcon style={{color:"black"}}/>
             </ListItemIcon>
             <ListItemText style={{color:"black", fontSize:'large'}} primary="Software Developer Intern, CES Corporation" />
-            {open ? <ExpandLess /> : <ExpandMore />}
+            {open ? <ExpandLess style={{color:"black"}} /> : <ExpandMore style={{color:"black"}} />}
           </ListItemButton>
           <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
@@ -75,7 +75,7 @@ const About = () => {
               <SendIcon style={{color:"black"}} />
             </ListItemIcon>
             <ListItemText style={{color:"black"}} primary="Software Developer Intern, Neurocage Systems Limited" />
-            {open2 ? <ExpandLess /> : <ExpandMore />}
+            {open2 ? <ExpandLess style={{color:"black"}} /> : <ExpandMore style={{color:"black"}} />}
           </ListItemButton>
           <Collapse in={open2} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>

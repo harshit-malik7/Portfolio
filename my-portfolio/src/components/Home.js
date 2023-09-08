@@ -117,6 +117,18 @@ const Home = () => {
       }}
     />
     </div>
+    <div className="info">
+      <img src="https://media.licdn.com/dms/image/D5603AQHt0pOImcj1FA/profile-displayphoto-shrink_800_800/0/1693545419433?e=1699488000&v=beta&t=Img6CtUksyjYxHyUvWrSEi2PjX8DEAsup8WEw-My0QM"></img>
+      <div className="info-text">
+        <p style={{color:"white"}}>Currently pursuing Bachelor's of Science in Software Engineering. (September 2019- May 2024 )
+
+Indian National currently living in Edmonton Alberta, with a passion for creating products that help the public and developing strategies to counter real-life problems using my technological knowledge. A keen and adapt learner to enhance my knowledge.
+
+Want to work on projects with experienced professionals and impact the daily lives of people with my work. As for my future, I hope to one day work as a software developer and work with a diverse team.
+
+In my free time, you can either find me at the gym or playing/watching soccer.</p>
+      </div>  
+    </div>
       {/* </header> */}
       <div ref={bottomElement} className="contact">
         <h1 style={{color:'blueviolet'}}>Contact Me</h1>

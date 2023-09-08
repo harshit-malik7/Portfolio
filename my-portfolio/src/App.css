@@ -26,7 +26,7 @@
 }
 
 .About-header {
-  background-color: #282c34;
+  background-color: black;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -36,6 +36,17 @@
   color: white;
   overflow: scroll;
   position: relative;
+}
+
+.info{
+  /* add styles to dislay the image and text in one line and make it fit right under the canvas */
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0px;
+  margin-bottom: 500px;
 }
 
 .resume{
@@ -84,7 +95,8 @@
   display:flex;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   /* padding-top: 20px; */
-  top:62%
+  top:62%;
+  margin-bottom: 0px; /* The typewriter cursor */
 }
 
 .contact{
