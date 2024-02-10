@@ -46,7 +46,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 0px;
-  margin-bottom: 500px;
+  margin-bottom: 300px;
 }
 
 .resume{
@@ -57,6 +57,7 @@
 .experience{
   position: relative;
   margin-bottom: 100px;
+  margin-top: 0px;
   background-image: url('https://images.pexels.com/photos/4834876/pexels-photo-4834876.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
   background-repeat: no-repeat;
 }
@@ -95,8 +96,8 @@
   display:flex;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   /* padding-top: 20px; */
-  top:62%;
-  margin-bottom: 0px; /* The typewriter cursor */
+  top:65%;
+  margin-top: 150px;
 }
 
 .contact{
