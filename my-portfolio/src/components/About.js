@@ -37,11 +37,11 @@ const About = () => {
   {"city": "MySQL", "lat": 80, "lng": 150},
   {"city": "SQLite", "lat": 10, "lng": -60},
   {"city": "OpenCV", "lat": -60, "lng": -90},
-  {"city": "Reactjs", "lat": 10, "lng": -100},
+  {"city": "Reactjs", "lat": 10, "lng": -10},
   {"city": "Flask", "lat": 20, "lng": -150},
   {"city": "Python", "lat": 30, "lng": 180},
   {"city": "ARMv-7", "lat": 40, "lng": -30},
-  {"city": "MATLAB", "lat": -60, "lng": 30},
+  {"city": "MATLAB", "lat": -30, "lng": 30},
   {"city": "HTML", "lat": 10, "lng": 100},
   {"city": "VMware", "lat": 60, "lng": -90},
   {"city": "Networking TCP/IP", "lat": 30, "lng": -120},
@@ -138,6 +138,7 @@ the UI on the web application." />
 
       </div>
       <div className='skills' style={{backgroundColor:'white'}}>
+      <h1 width = "10%" height = "100%" style={{color:"white", backgroundColor:"black"}}>Skills</h1>
       <Globe width = "50%" height = "100%" backgroundColor='black' showGlobe='false'  labelsData={labelsData} labelLat={d => d.lat} labelLng={d => d.lng} labelText={ d => d.city} labelSize={d => 5} labelDotRadius={d => 0.5} labelColor={() => 'white'} labelResolution={2} labelIncludeDot = 'false' />
       </div>
       <div className='resume'>
