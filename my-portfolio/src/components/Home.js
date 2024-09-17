@@ -3,7 +3,8 @@ import {Routes, useNavigate, Route} from 'react-router-dom'
 import About from './About'
 import Contact from './Contact'
 import Typewriter from 'typewriter-effect';
-import { useEffect } from 'react';
+import { useEffect, useState} from 'react';
+import {useAnimate, stagger,motion} from 'framer-motion';
 
 const Home = () => {
 
@@ -18,10 +19,14 @@ const Home = () => {
         bottomElement?.current?.scrollIntoView({behavior:"smooth"})
     }
 
+    const [open, setOpen] = useState(false);
+    const [scope,animate]=useAnimate();
+
     const sun = useRef(new Image());
     const earth = useRef(new Image());
     const mars = useRef(new Image());
     const canvasref=useRef(null);
+    const staggerList = stagger(0.1, { startDelay: 0.25 });
     useEffect(() => {
       let requestID;
   
@@ -117,6 +122,32 @@ const Home = () => {
       };
   }, []);
 
+  useEffect(() => {
+    animate(
+      "ul",
+      {
+        width: open ? 150 : 0,
+        height: open ? 200 : 0,
+        opacity: open ? 1 : 0
+      },
+      {
+        type: "spring",
+        bounce: 0,
+        duration: 0.4
+      }
+    );
+    animate(
+      "li",
+      open
+        ? { opacity: 1, scale: 1, x: 0 }
+        : { opacity: 0, scale: 0.3, x: -50 },
+      {
+        duration: 0.2,
+        delay: open ? staggerList : 0
+      }
+    );
+  }, [open]);
+
 
     
 
@@ -124,12 +155,19 @@ const Home = () => {
       
     <div className="App-header">
         {/*<header className="App-header">*/}
-        <img className="logo" src="https://www.ualberta.ca/women-in-scholarship-engineering-science-technology/media-library/images/logos/copy-of-faculty-of-engineering.jpg" style={{width:"300px",height:"100px", position: 'absolute', left:'0', top:'0'}}></img>
-        <div className='button-container'>
-          <button className='btn btn-outline-success btn-lg' style={{fontFamily:'cursive', border:'none', backgroundColor: 'transparent'}} onClick={toAbout}>About me</button>
-          <button className='btn btn-outline-info btn-lg' style={{fontFamily:'cursive',border:'none',backgroundColor: 'transparent'}} onClick={scrolltoBottom}>Contact me</button>
+        <img className="logo" src="https://www.ualberta.ca/women-in-scholarship-engineering-science-technology/media-library/images/logos/copy-of-faculty-of-engineering.jpg" style={{width:"300px",height:"100px", position: 'absolute', left:'0', top:'0',backgroundColor:'transparent'}}></img>
+        <div className='button-container' ref ={scope}>
+          <motion.button style={{color: 'white',border:'none', backgroundColor: 'transparent'}} onClick={toAbout}>About me</motion.button>
+          <motion.button style={{border:'none', backgroundColor: 'transparent', color:'white'}} onClick={() => setOpen(!open)} whileTap={{ scale: 0.95 }}>
+            Contact Me
+          </motion.button>
+      <ul>
+        <motion.li><a href="https://www.linkedin.com/in/harshit-malik-273108224/"><img className="linkedin" src="https://cdn-icons-png.flaticon.com/512/174/174857.png" ></img></a></motion.li>
+        <motion.li><a href="https://github.com/harshit-malik7"><img className="linkedin" src="https://cdn-icons-png.flaticon.com/512/25/25231.png" style={{backgroundColor:'white'}}></img></a></motion.li>
+        <motion.li><a href="mailto:harshit4731@gmail.com"><img className="linkedin" src="https://cdn-icons-png.flaticon.com/512/732/732200.png"></img></a></motion.li>
+      </ul>
         </div>
-        <canvas ref={canvasref} width="800" height="800" className='canvas' ></canvas>
+        <canvas ref={canvasref} width="1000" height="900" className='canvas' ></canvas>
         {/* <iframe className="gif" src="https://giphy.com/embed/qgQUggAC3Pfv687qPC" width="400" height="300" frameBorder="0" class="giphy-embed"></iframe> */}
       {/*Typewriter  onInit={(typewriter)=>{ typewriter.typeString("Hello, I am Harshit Malik").pauseFor(1000).deleteAll().typeString("I am in my final year as a software engineering co-op student at the University of Alberta").start();}}>*/}
       <div className="typewriter">
@@ -157,14 +195,7 @@ Want to work on projects with experienced professionals and impact the daily liv
 
 In my free time, you can either find me at the gym or playing/watching soccer.</p>
       </div>  
-    </div>
-      {/* </header> */}
-      <div ref={bottomElement} className="contact">
-        <h1 style={{color:'blueviolet'}}>Contact Me</h1>
-        <a href="https://www.linkedin.com/in/harshit-malik-273108224/"><img className="linkedin" src="https://cdn-icons-png.flaticon.com/512/174/174857.png" ></img></a>
-        <a href="https://github.com/harshit-malik7"><img className="linkedin" src="https://cdn-icons-png.flaticon.com/512/25/25231.png" style={{backgroundColor:'white'}}></img></a>
-        <a href="mailto:harshit4731@gmail.com"><img className="linkedin" src="https://cdn-icons-png.flaticon.com/512/732/732200.png"></img></a>
-      </div>    
+    </div>   
     </div>
   )
 }

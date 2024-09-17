@@ -19,8 +19,6 @@ const useStyles = makeStyles((theme) => ({
   },
   section: {
     marginBottom: '40px',
-    padding: '20px',
-    backgroundImage: 'https://th.bing.com/th/id/R.13b24ca1ca945964923963db9e7b2703?rik=QlleJAxYUqZxcw&riu=http%3a%2f%2fwww.photos-public-domain.com%2fwp-content%2fuploads%2f2011%2f03%2fblack-parchment-paper-texture.jpg&ehk=%2buFsyFI1tav5FOA7v%2fNCrpXJggC14IWDIWvK5Mo9uY8%3d&risl=&pid=ImgRaw&r=0',
   },
   experienceHeader: {
     color: 'white',
@@ -178,7 +176,7 @@ const About = () => {
         <Typography variant = "h4" className={classes.experienceHeader}>Experience</Typography>
         <List
           component="nav"
-          subheader={<ListSubheader component="div" style={{ color: 'white' }}>Professional Experience</ListSubheader>}
+          subheader={<ListSubheader component="div" style={{ color: 'black', backgroundColor: 'black' }}></ListSubheader>}
         >
           <ListItemButton onClick={handleClick} className={classes.listItem}>
             <ListItemIcon>
@@ -278,9 +276,8 @@ Kubernetes clusters." className={classes.listItemText} />
           </Collapse>
         </List>
       </Box>
-
+      <Typography variant="h4" className={classes.projectHeader}>Projects</Typography>
       <Box className={`${classes.section} ${classes.projectSection}`}>
-        <Typography variant="h4" className={classes.projectHeader}>Projects</Typography>
         <Divider className={classes.divider} />
         {projects.map((project, index) => (
           <Card key={index} className={classes.card}>
@@ -296,9 +293,8 @@ Kubernetes clusters." className={classes.listItemText} />
           </Card>
         ))}
       </Box>
-
+      <Typography variant="h4" className={classes.skillsHeader}>Skills</Typography>
       <Box className={`${classes.section} ${classes.skillsSection}`}>
-        <Typography variant="h4" className={classes.skillsHeader}>Skills</Typography>
         <Globe
           width={800}
           height={600}
@@ -308,7 +304,7 @@ Kubernetes clusters." className={classes.listItemText} />
           labelLat={d => d.lat}
           labelLng={d => d.lng}
           labelText={d => d.city}
-          labelSize={() => 1.5}
+          labelSize={() => 3}
           labelColor={() => 'white'}
           labelDotRadius={() => 0.5}
           labelResolution={2}
@@ -324,7 +320,7 @@ Kubernetes clusters." className={classes.listItemText} />
         <object
           data={Resume_Harshit_Malik}
           type="application/pdf"
-          width="100%"
+          width="50%"
           style={{ height: 'calc(100vh - 200px)' }}
           aria-label="This object displays a PDF file"
         />
