@@ -22,71 +22,100 @@ const Home = () => {
     const earth = useRef(new Image());
     const mars = useRef(new Image());
     const canvasref=useRef(null);
-    useEffect(()=>{
+    useEffect(() => {
       let requestID;
+  
+      const canvas = canvasref.current;
+      const ctx = canvas.getContext("2d");
       
-      
-      const canvas=canvasref.current;
-      const ctx=canvas.getContext("2d");
-      // sun.current.src = "https://upload.wikimedia.org/wikipedia/commons/7/78/F-type_subgiant_star_in_Celestia_03.png";
-      sun.current.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ88IDEtSSTQUnYes_xdF23woS-Wu0iSmIRVg&usqp=CAU";
+      sun.current.src = "https://files.oaiusercontent.com/file-qBi5cQGdwpa028Uyn7A2y1e5?se=2024-09-17T17%3A07%3A30Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D2bd41b15-8010-41f3-820f-f2ce382454f4.webp&sig=WodSYrqHE9RJM1h4YOiDfLbypDe30SAr7CyaKLz%2Bu28%3D";
       earth.current.src = "https://i.etsystatic.com/28921914/r/il/6012cc/3477638374/il_fullxfull.3477638374_rl1v.jpg";
-      mars.current.src="https://as2.ftcdn.net/v2/jpg/03/41/22/33/1000_F_341223314_TuiMtFvlAba07hrDA6GX8Hz3Omt5CdZV.jpg";
-      function init() {
-        window.requestAnimationFrame(draw);
-      }
-      function draw() {
-        ctx.globalCompositeOperation = 'destination-over';
-        ctx.clearRect(0, 0, 800, 800); // clear canvas
+      mars.current.src = "https://as2.ftcdn.net/v2/jpg/03/41/22/33/1000_F_341223314_TuiMtFvlAba07hrDA6GX8Hz3Omt5CdZV.jpg";
   
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
-        ctx.strokeStyle = 'rgba(0, 153, 255, 0.4)';
-        ctx.save();
-        ctx.translate(500, 300);
-        ctx.save();
+      const stars = [];
   
-        // Earth
-        const time = new Date();
-        ctx.rotate(
-          ((2 * Math.PI) / 60) * time.getSeconds() +
-            ((2 * Math.PI) / 60000) * time.getMilliseconds(),
-        );
-        ctx.translate(225, 0);
-        ctx.fillRect(0, -12, 40, 24); // Shadow
-        ctx.drawImage(earth.current, -25, -25,50,50);
-        ctx.restore();
-
-        
-  
-        // Mars
-        ctx.save();
-         const marsTime = new Date();
-         ctx.rotate(
-           (( Math.PI) / 6) * marsTime.getSeconds()*0.1 +
-             (( Math.PI) / 6000) * marsTime.getMilliseconds()*0.1,
-         );
-         ctx.translate(325,0);
-         ctx.drawImage(mars.current, -45, -45, 50,50);
-         ctx.restore();
-  
-        ctx.restore();
-  
-        ctx.beginPath();
-        ctx.arc(500, 300, 225, 0, Math.PI * 2, false); // Earth orbit
-        ctx.stroke();
-        ctx.closePath();
-        //mars orbit
-        ctx.beginPath();
-        ctx.arc(500, 300, 300, 0, Math.PI * 2, false); // Mars orbit
-        ctx.stroke();
-  
-        ctx.drawImage(sun.current, 415, 200, 200, 200);
-  
-        window.requestAnimationFrame(draw);
+      // Generate random stars for background
+      for (let i = 0; i < 100; i++) {
+          stars.push({
+              x: Math.random() * canvas.width,
+              y: Math.random() * canvas.height,
+              radius: Math.random() * 2,
+          });
       }
   
-      init();
-    },[] );
+      function drawStars() {
+          ctx.save();
+          ctx.fillStyle = 'white';
+          stars.forEach(star => {
+              ctx.beginPath();
+              ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+              ctx.fill();
+              ctx.closePath();
+          });
+          ctx.restore();
+      }
+  
+      function drawPlanets() {
+          const time = new Date();
+          const earthOrbitSpeed = ((2 * Math.PI) / 60) * time.getSeconds() + ((2 * Math.PI) / 60000) * time.getMilliseconds();
+          const marsOrbitSpeed = ((Math.PI) / 60) * time.getSeconds() + ((Math.PI) / 60000) * time.getMilliseconds() * 0.8;
+  
+          // Earth orbit
+          ctx.save();
+          ctx.rotate(earthOrbitSpeed);
+          ctx.translate(225, 0);
+          ctx.drawImage(earth.current, -25, -25, 50, 50); // Earth
+          ctx.restore();
+  
+          // Mars orbit
+          ctx.save();
+          ctx.rotate(marsOrbitSpeed);
+          ctx.translate(325, 0);
+          ctx.drawImage(mars.current, -30, -30, 50, 50); // Mars
+          ctx.restore();
+      }
+  
+      // function drawOrbits() {
+      //     // Earth Orbit
+      //     ctx.strokeStyle = 'rgba(0, 153, 255, 0.5)';
+      //     ctx.beginPath();
+      //     ctx.arc(500, 300, 225, 0, Math.PI * 2);
+      //     ctx.stroke();
+      //     ctx.closePath();
+  
+      //     // Mars Orbit
+      //     ctx.strokeStyle = 'rgba(255, 100, 100, 0.5)';
+      //     ctx.beginPath();
+      //     ctx.arc(500, 300, 325, 0, Math.PI * 2);
+      //     ctx.stroke();
+      //     ctx.closePath();
+      // }
+  
+      function drawSun() {
+          ctx.drawImage(sun.current, 415, 200, 200, 200); // Sun
+      }
+  
+      function animate() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          drawStars();
+          ctx.save();
+          ctx.translate(500, 300); // Move the origin to the center of the sun
+  
+          // drawOrbits();
+          drawPlanets();
+  
+          ctx.restore();
+          drawSun();
+  
+          requestID = requestAnimationFrame(animate);
+      }
+  
+      animate();
+  
+      return () => {
+          cancelAnimationFrame(requestID);
+      };
+  }, []);
 
 
     
@@ -106,7 +135,7 @@ const Home = () => {
       <div className="typewriter">
       <Typewriter
       options={{
-        strings: ["Hello, I am&nbsp; <strong style='color:red'>Harshit Malik</strong>", "I am in my final year as a software engineering co-op student at the University of Alberta"],
+        strings: ["Hello, I am&nbsp; <strong style='color:red'>Harshit Malik</strong>", "I am a Junior Software Developer working at CES corporation."],
         autoStart: true, // Automatically start typing
         loop: true,       // Loop the typing animation
         delay: 50,        // Delay between each character
@@ -120,9 +149,9 @@ const Home = () => {
     <div className="info">
       <img src="https://media.licdn.com/dms/image/D5603AQHt0pOImcj1FA/profile-displayphoto-shrink_800_800/0/1693545419433?e=1699488000&v=beta&t=Img6CtUksyjYxHyUvWrSEi2PjX8DEAsup8WEw-My0QM"></img>
       <div className="info-text">
-        <p style={{color:"white"}}>Currently pursuing Bachelor's of Science in Software Engineering. (September 2019- May 2024 )
+        <p style={{color:"white"}}>Bachelor's of Science Graduate in Software Engineering. (September 2019- May 2024 )
 
-Indian National currently living in Edmonton Alberta, with a passion for creating products that help the public and developing strategies to counter real-life problems using my technological knowledge. A keen and adapt learner to enhance my knowledge.
+Currently living in Edmonton Alberta, with a passion for creating products that help the public and developing strategies to counter real-life problems using my technological knowledge. A keen and adapt learner to enhance my knowledge.
 
 Want to work on projects with experienced professionals and impact the daily lives of people with my work. As for my future, I hope to one day work as a software developer and work with a diverse team.
 

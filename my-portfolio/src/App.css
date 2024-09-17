@@ -54,13 +54,25 @@
   margin-bottom: 100px;
 }
 
-.experience{
+.experience {
   position: relative;
   margin-bottom: 100px;
   margin-top: 0px;
+  
+  /* Background image */
   background-image: url('https://images.pexels.com/photos/4834876/pexels-photo-4834876.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
   background-repeat: no-repeat;
+  
+  /* Increase the width of the background image */
+  background-size: cover; /* Ensures the image covers the entire element */
+  
+  /* If you want the image width to be bigger but not stretch */
+  background-size: 120%; /* 120% of its original size */
+  
+  /* To keep the image centered */
+  background-position: center;
 }
+
 
 .App-link {
   color: #61dafb;
@@ -106,17 +118,18 @@
   text-align: center; /* Center its content horizontally */
 }
 
-.canvas{
-  position:relative;
-  margin-left: 35%;
-  margin-right: 50%;
-  /*add styling to make it not move dependeing on the size of the screen*/
-  margin-bottom: 0px;
+.canvas {
+  position: relative;
+  display: block;
+  margin: 0 auto; /* Center the canvas horizontally */
   margin-top: 45px;
-  width: 50%;
-  height: 40%;
-
+  
+  /* Make the width and height responsive */
+  width: 60vw;   /* 60% of the viewport width */
+  height: 80vh;  /* 40% of the viewport height */
+  
 }
+
 
 @keyframes App-logo-spin {
   from {
