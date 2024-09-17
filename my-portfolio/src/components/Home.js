@@ -5,6 +5,7 @@ import Contact from './Contact'
 import Typewriter from 'typewriter-effect';
 import { useEffect, useState} from 'react';
 import {useAnimate, stagger,motion} from 'framer-motion';
+import HomePic from './Homepage.webp';
 
 const Home = () => {
 
@@ -33,7 +34,7 @@ const Home = () => {
       const canvas = canvasref.current;
       const ctx = canvas.getContext("2d");
       
-      sun.current.src = "https://files.oaiusercontent.com/file-qBi5cQGdwpa028Uyn7A2y1e5?se=2024-09-17T17%3A07%3A30Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D2bd41b15-8010-41f3-820f-f2ce382454f4.webp&sig=WodSYrqHE9RJM1h4YOiDfLbypDe30SAr7CyaKLz%2Bu28%3D";
+      sun.current.src = HomePic;
       earth.current.src = "https://i.etsystatic.com/28921914/r/il/6012cc/3477638374/il_fullxfull.3477638374_rl1v.jpg";
       mars.current.src = "https://as2.ftcdn.net/v2/jpg/03/41/22/33/1000_F_341223314_TuiMtFvlAba07hrDA6GX8Hz3Omt5CdZV.jpg";
   
@@ -185,17 +186,26 @@ const Home = () => {
     />
     </div>
     <div className="info">
-      <img src="https://media.licdn.com/dms/image/D5603AQHt0pOImcj1FA/profile-displayphoto-shrink_800_800/0/1693545419433?e=1699488000&v=beta&t=Img6CtUksyjYxHyUvWrSEi2PjX8DEAsup8WEw-My0QM"></img>
-      <div className="info-text">
-        <p style={{color:"white"}}>Bachelor's of Science Graduate in Software Engineering. (September 2019- May 2024 )
-
-Currently living in Edmonton Alberta, with a passion for creating products that help the public and developing strategies to counter real-life problems using my technological knowledge. A keen and adapt learner to enhance my knowledge.
-
-Want to work on projects with experienced professionals and impact the daily lives of people with my work. As for my future, I hope to one day work as a software developer and work with a diverse team.
-
-In my free time, you can either find me at the gym or playing/watching soccer.</p>
+        <div className="info-text">
+          <p style={{
+            color: "white",
+            fontSize: "18px",
+            fontFamily: "Arial, sans-serif",
+            backgroundColor: "rgba(0,0,0,0.6)",
+            padding: "20px",
+            borderRadius: "10px",
+            boxShadow: "0 4px 8px rgba(0,0,0,0.3)",
+            lineHeight: "1.6",
+            textAlign: "center"
+          }}>
+            <strong>Bachelor's of Science Graduate</strong> in Software Engineering (September 2019 - May 2024). <br /><br />
+            Currently living in Edmonton, Alberta, with a passion for creating products that help the public and developing strategies to counter real-life problems using my technological knowledge. <br /><br />
+            A keen and adaptive learner eager to enhance my knowledge.<br /><br />
+            Want to work on projects with experienced professionals and impact daily lives with my work.<br /><br />
+            In my free time, you can find me either at the gym or playing/watching soccer.
+          </p>
+        </div>
       </div>  
-    </div>   
     </div>
   )
 }

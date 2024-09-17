@@ -69,6 +69,7 @@ const useStyles = makeStyles((theme) => ({
   projectSection: {
     textAlign: 'center',
     display: 'flex',
+    padding : '20px',
 
   },
   projectHeader: {
@@ -78,6 +79,7 @@ const useStyles = makeStyles((theme) => ({
   card: {
     position: 'relative',
     marginBottom: '20px',
+    padding: '20px',
     width: '50%',
     '&:hover $cardMedia': {
       opacity: 0.3,
@@ -166,7 +168,7 @@ const About = () => {
     {
       name: "OpenAI Project Idea Generator and Resource Finder",
       description: "Created a web application that leverages the OpenAI Davinci model and ReactJS for generating project ideas and providing corresponding resources through links. Utilized user input parameters such as coding languages, project type, team size, experience, and desired number of ideas to generate a dynamic list of project suggestions. Enabled users to select a project idea and receive a customized list of resources generated.",
-      image: "https://th.bing.com/th/id/OIP.jFZSf71NPJLYg-eQ-o9M_gHaEK?rs=1&pid=ImgDetMain",
+      image: "https://vectorseek.com/wp-content/uploads/2023/02/OpenAI-Logo-Vector.jpg",
     },
   ];
 
